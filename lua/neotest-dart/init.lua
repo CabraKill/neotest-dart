@@ -208,23 +208,23 @@ end
 function adapter.results(_, result, tree)
   local success, data = pcall(lib.files.read, result.output)
   if not success then
-    vim.notify('Failed to read test results', vim.log.levels.ERROR)
+    --vim.notify('Failed to read test results', vim.log.levels.ERROR)
     return {}
   end
   local lines = vim.split(data, '\n')
   local tests = parser.parse_lines(tree, lines, outline)
 
   -- Format the results into a string
-  local result_str = ''
-  for test_name, test_results in pairs(tests) do
-    result_str = result_str .. test_name .. ':\n'
-    for _, test_result in ipairs(test_results) do
-      result_str = result_str .. '  ' .. test_result.name .. ': ' .. test_result.status .. '\n'
-    end
-  end
+  --local result_str = ''
+  --for test_name, test_results in pairs(tests) do
+  --  result_str = result_str .. test_name .. ':\n'
+  --  for _, test_result in ipairs(test_results) do
+  --    result_str = result_str .. '  ' .. test_result.name .. ': ' .. test_result.status .. '\n'
+  --  end
+  --end
 
-  -- Show the results in a dialog
-  vim.notify(result_str, vim.log.levels.INFO)
+  ---- Show the results in a dialog
+  --vim.notify(result_str, vim.log.levels.INFO)
   return tests
 end
 
